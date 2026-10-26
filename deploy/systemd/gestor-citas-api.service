@@ -1,0 +1,31 @@
+[Unit]
+Description=Gestor de citas - API y web
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gestor
+Group=gestor
+WorkingDirectory=/opt/gestor-citas/current/server
+EnvironmentFile=/etc/gestor-citas/gestor-citas.env
+# La API no ejecuta el worker: lo hace su propio servicio.
+Environment=REMINDER_WORKER=false
+ExecStart=/usr/bin/node src/index.ts
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+
+# Endurecimiento
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+ReadWritePaths=/var/lib/gestor-citas /var/log/gestor-citas
+
+[Install]
+WantedBy=multi-user.target

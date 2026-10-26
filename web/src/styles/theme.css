@@ -1,0 +1,155 @@
+/*
+ * Identidad visual de Supernova.
+ * Valores oficiales tomados de SUPERNOVA-dev/resources/css/app.css (bloque @theme):
+ *   primario (azul marino) #040167 y su escala 50-900, hover #060291,
+ *   acento dorado #96731a (soft #f6efd9, light #f0d998) reservado a la cifra/acción «hero»,
+ *   fondo #f8fafc, superficie #ffffff, texto #1e293b / #64748b / #94a3b8, bordes #e2e8f0, fila hover #f1f5f9.
+ * El proyecto principal no tiene modo oscuro ni tokens de éxito/aviso/error: aquí el modo oscuro se
+ * deriva de la propia escala del primario (900/800/700/300) y los estados usan los tonos por defecto
+ * de Tailwind (emerald/amber/red), igual que los componentes del proyecto principal.
+ */
+:root {
+  --radius: 0.5rem; /* rounded-lg en el proyecto principal */
+
+  --brand: #040167; /* azul marino oficial; fijo en ambos temas (paneles de marca) */
+  --page: #f8fafc;
+  --background: #ffffff;
+  --foreground: #1e293b;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --popover: #ffffff;
+  --popover-foreground: #1e293b;
+  --primary: #040167;
+  --primary-foreground: #ffffff;
+  --primary-hover: #060291;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #1e293b;
+  --destructive: #dc2626; /* red-600 */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #5a5acb; /* primary-400 */
+
+  --gold: #96731a;
+  --gold-soft: #f6efd9;
+  --gold-light: #f0d998;
+
+  --success: #059669; /* emerald-600 */
+  --warning: #f59e0b; /* amber-500 */
+
+  --chart-1: #040167;
+  --chart-2: #5a5acb;
+  --chart-3: #96731a;
+  --chart-4: #ef4444;
+  --chart-5: #94a3b8;
+
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #1e293b;
+  --sidebar-primary: #040167;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8e8f7; /* primary-50 */
+  --sidebar-accent-foreground: #040167;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #5a5acb;
+}
+
+.dark {
+  --page: #000123; /* primary-900 */
+  --background: #000123;
+  --foreground: #f8fafc;
+  --card: #010134; /* primary-800 */
+  --card-foreground: #f8fafc;
+  --popover: #010134;
+  --popover-foreground: #f8fafc;
+  --primary: #7777d5; /* primary-300 */
+  --primary-foreground: #000123;
+  --primary-hover: #9e9ee1;
+  --secondary: #020145; /* primary-700 */
+  --secondary-foreground: #f8fafc;
+  --muted: #020145;
+  --muted-foreground: #94a3b8;
+  --accent: #020145;
+  --accent-foreground: #f8fafc;
+  --destructive: #f87171; /* red-400 */
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 16%);
+  --ring: #7777d5;
+
+  --gold: #f0d998; /* gold-light, legible sobre fondo oscuro */
+  --gold-soft: rgb(240 217 152 / 14%);
+  --gold-light: #f0d998;
+
+  --success: #34d399; /* emerald-400 */
+  --warning: #fbbf24; /* amber-400 */
+
+  --chart-1: #7777d5;
+  --chart-2: #5a5acb;
+  --chart-3: #f0d998;
+  --chart-4: #f87171;
+  --chart-5: #94a3b8;
+
+  --sidebar: #010134;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #7777d5;
+  --sidebar-primary-foreground: #000123;
+  --sidebar-accent: #020145;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: #7777d5;
+}
+
+@theme inline {
+  --font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-brand: var(--brand);
+  --color-page: var(--page);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-light: var(--gold-light);
+  --color-primary-hover: var(--primary-hover);
+
+  /* Sombras con tinte del color de marca (proyecto principal) */
+  --shadow-soft: 0 1px 2px 0 rgba(4, 1, 103, 0.04), 0 2px 10px -2px rgba(4, 1, 103, 0.07);
+  --shadow-soft-lg: 0 4px 6px -2px rgba(4, 1, 103, 0.05), 0 12px 24px -8px rgba(4, 1, 103, 0.12);
+  --shadow-accent: 0 8px 20px -6px rgba(150, 115, 26, 0.35);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}

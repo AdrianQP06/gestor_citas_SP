@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+server/data/*
+!server/data/.gitkeep
+*.log
+.DS_Store
+
+# Generado por TanStack Router
+web/.tanstack

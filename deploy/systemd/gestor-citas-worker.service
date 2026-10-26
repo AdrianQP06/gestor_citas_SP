@@ -1,0 +1,30 @@
+[Unit]
+Description=Gestor de citas - worker de recordatorios de WhatsApp
+After=network-online.target gestor-citas-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gestor
+Group=gestor
+WorkingDirectory=/opt/gestor-citas/current/server
+EnvironmentFile=/etc/gestor-citas/gestor-citas.env
+ExecStart=/usr/bin/node src/worker.ts
+# Si el proceso cae, systemd lo relanza; los recordatorios pendientes están en la base de datos
+# (cola persistente) y se retoman, sin duplicar envíos.
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+ReadWritePaths=/var/lib/gestor-citas /var/log/gestor-citas
+
+[Install]
+WantedBy=multi-user.target

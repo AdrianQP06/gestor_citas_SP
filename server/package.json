@@ -1,0 +1,35 @@
+{
+  "name": "gestor-citas-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=../.env src/index.ts",
+    "start": "node --env-file-if-exists=../.env src/index.ts",
+    "worker": "node --env-file-if-exists=../.env src/worker.ts",
+    "migrate": "node --env-file-if-exists=../.env src/scripts/migrate.ts",
+    "seed": "node --env-file-if-exists=../.env src/scripts/seed.ts",
+    "backup": "node --env-file-if-exists=../.env src/scripts/backup.ts",
+    "test": "node --env-file-if-exists=../.env --test --test-concurrency=1 --test-reporter=spec \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "create-admin": "node --env-file-if-exists=../.env src/scripts/create-admin.ts",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.5",
+    "hono": "^4.10.0",
+    "luxon": "^3.7.2",
+    "mysql2": "^3.24.6",
+    "zod": "^4.3.6",
+    "pdfkit": "^0.17.2",
+    "@fontsource/manrope": "^5.2.8"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^25.6.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.58.2",
+    "eslint": "^10.2.1",
+    "@types/pdfkit": "^0.17.3"
+  }
+}

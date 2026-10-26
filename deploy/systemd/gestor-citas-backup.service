@@ -1,0 +1,18 @@
+[Unit]
+Description=Gestor de citas - copia de seguridad de la base de datos
+
+[Service]
+Type=oneshot
+User=gestor
+Group=gestor
+WorkingDirectory=/opt/gestor-citas/current/server
+EnvironmentFile=/etc/gestor-citas/gestor-citas.env
+Environment=BACKUP_KEEP=14
+ExecStart=/usr/bin/node src/scripts/backup.ts /var/lib/gestor-citas/backups
+# Copia fuera del servidor (opcional; se omite si no hay rclone configurado).
+ExecStartPost=/usr/bin/bash /opt/gestor-citas/current/deploy/scripts/backup-offsite.sh
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+ReadWritePaths=/var/lib/gestor-citas /var/log/gestor-citas

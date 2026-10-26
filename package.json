@@ -1,0 +1,29 @@
+{
+  "name": "gestor-citas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Gestor de citas: dashboard del equipo, portal público de reservas y recordatorios por WhatsApp",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w web\"",
+    "build": "npm run build -w web",
+    "start": "npm run start -w server",
+    "migrate": "npm run migrate -w server",
+    "seed": "npm run seed -w server",
+    "test": "npm run test -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
+    "lint": "npm run lint -w server && npm run lint -w web",
+    "worker": "npm run worker -w server",
+    "backup": "npm run backup -w server",
+    "create-admin": "npm run create-admin -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

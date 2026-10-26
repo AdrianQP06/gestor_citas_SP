@@ -1,0 +1,23 @@
+# Caddy obtiene y renueva solo el certificado HTTPS (Let's Encrypt).
+# Sustituye citas.tudominio.com por tu dominio (el registro DNS A debe apuntar al Droplet).
+citas.tudominio.com {
+	encode zstd gzip
+
+	# Los recursos con hash de Vite son inmutables.
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=31536000, immutable"
+
+	# La API y la SPA las sirve el proceso Node en 127.0.0.1:3000.
+	# Caddy fija X-Forwarded-For con la IP real del cliente (por eso TRUST_PROXY=true).
+	reverse_proxy 127.0.0.1:3000 {
+		health_uri /api/v1/health
+		health_interval 30s
+	}
+
+	log {
+		output file /var/log/caddy/gestor-citas.access.log {
+			roll_size 20mb
+			roll_keep 10
+		}
+	}
+}
